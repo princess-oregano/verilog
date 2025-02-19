@@ -23,14 +23,17 @@ initial begin
     $dumpvars;
     i_a = 'd5; i_b = 'd3; i_op = ADD; #1 check(8);
     i_a = 'd5; i_b = 'd3; i_op = SUB; #1 check(2);
-    i_a = 'd5; i_b = 'd3; i_op = SLL; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = SLT; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = SLTU; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = XOR; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = SRL; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = SRA; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = OR; #1 check(8);
-    i_a = 'd5; i_b = 'd3; i_op = AND; #1 check(8);
+    i_a = 'b101; i_b = 'd3; i_op = SLL; #1 check('b101000);
+    i_a = 'd3; i_b = 'd5; i_op = SLT; #1 check(1);
+    i_a = 'd3; i_b = 'd5; i_op = SLTU; #1 check(1);
+    i_a = -3; i_b = 3; i_op = SLTU; #1 check(0);
+    i_a = 'b1010; i_b = 'b1100; i_op = XOR; #1 check('b0110);
+    i_a = 23; i_b = 2; i_op = SRL; #1 check(5);
+    i_a = 'b11111111111111111111111111110010; i_b = 2; i_op = SRL; #1 check('b00111111111111111111111111111100);
+    i_a = 23; i_b = 2; i_op = SRA; #1 check(5);
+    i_a = 'b11111111111111111111111111110010; i_b = 2; i_op = SRA; #1 check('b11111111111111111111111111111100);
+    i_a = 'b1010; i_b = 'b1100; i_op = OR; #1 check('b1110);
+    i_a = 'b1010; i_b = 'b1100; i_op = AND; #1 check('b1000);
     $finish();
 end
 

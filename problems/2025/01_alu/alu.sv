@@ -17,7 +17,7 @@ always @(*) begin
         SLTU    : o_res = i_a < i_b;
         XOR     : o_res = i_a ^ i_b;
         SRL     : o_res = i_a >> i_b[4:0];
-        SRA     : o_res = i_a >>> i_b[4:0];
+        SRA     : o_res = $signed(i_a) >>> i_b[4:0];
         OR      : o_res = i_a | i_b;
         AND     : o_res = i_a & i_b;
         default : o_res = 1'dx;
