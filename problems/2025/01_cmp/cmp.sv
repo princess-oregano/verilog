@@ -10,14 +10,15 @@ module cmp (
 
 always @(*) begin
     case (i_cmpop)
-        BEQ : o_taken = (i_a == i_b);
-        BNE : o_taken = (i_a != i_b);
-        BLT : o_taken = ($signed(i_a) < $signed(i_b));
-        BGE : o_taken = ($signed(i_a) >= $signed(i_b));
-        BLTU: o_taken = (i_a < i_b);
-        BGEU: o_taken = (i_a >= i_b);
-        default: o_taken = 'dx;
+        BEQ    :     o_taken = (i_a == i_b);
+        BNE    :     o_taken = (i_a != i_b);
+        BLT    :     o_taken = ($signed(i_a) < $signed(i_b));
+        BGE    :     o_taken = ($signed(i_a) >= $signed(i_b));
+        BLTU   :     o_taken = (i_a < i_b);
+        BGEU   :     o_taken = (i_a >= i_b);
+        default:     o_taken = 'dx;
     endcase
 end
 
 endmodule
+

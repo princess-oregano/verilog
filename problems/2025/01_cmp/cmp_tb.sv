@@ -22,13 +22,44 @@ endtask
 initial begin
     $dumpvars;
     // BEQ
-    i_a = 'd3; i_b = 'd3; i_cmpop = BEQ; #1 check(1);
-    i_a = 'd5; i_b = 'd3; i_cmpop = BEQ; #1 check(0);
+    i_a =  3; i_b =  3; i_cmpop = BEQ; #1 check(1);
+    i_a =  5; i_b =  3; i_cmpop = BEQ; #1 check(0);
 
     // BNE
-    i_a = 'd3; i_b = 'd3; i_cmpop = BNE; #1 check(0);
-    i_a = 'd5; i_b = 'd3; i_cmpop = BNE; #1 check(1);
+    i_a =  3; i_b =  3; i_cmpop = BNE; #1 check(0);
+    i_a =  5; i_b =  3; i_cmpop = BNE; #1 check(1);
 
+    // BLT
+    i_a =  3; i_b =  5; i_cmpop = BLT; #1 check(1);
+    i_a =  5; i_b =  5; i_cmpop = BLT; #1 check(0);
+    i_a = -3; i_b = -5; i_cmpop = BLT; #1 check(0);
+    i_a = -5; i_b = -3; i_cmpop = BLT; #1 check(1);
+    i_a = -5; i_b =  3; i_cmpop = BLT; #1 check(1);
+    i_a = -3; i_b =  3; i_cmpop = BLT; #1 check(1);
+
+    // BGE
+    i_a =  3; i_b =  5; i_cmpop = BGE; #1 check(0);
+    i_a =  5; i_b =  5; i_cmpop = BGE; #1 check(1);
+    i_a = -3; i_b = -5; i_cmpop = BGE; #1 check(1);
+    i_a = -5; i_b = -3; i_cmpop = BGE; #1 check(0);
+    i_a = -5; i_b =  3; i_cmpop = BGE; #1 check(0);
+    i_a = -3; i_b =  3; i_cmpop = BGE; #1 check(0);
+
+    // BLTU
+    i_a =  3; i_b =  5; i_cmpop = BLTU; #1 check(1);
+    i_a =  5; i_b =  5; i_cmpop = BLTU; #1 check(0);
+    i_a = -3; i_b = -5; i_cmpop = BLTU; #1 check(0);
+    i_a = -5; i_b = -3; i_cmpop = BLTU; #1 check(1);
+    i_a = -5; i_b =  3; i_cmpop = BLTU; #1 check(0);
+    i_a = -3; i_b =  3; i_cmpop = BLTU; #1 check(0);
+
+    // BGEU
+    i_a =  3; i_b =  5; i_cmpop = BGEU; #1 check(0);
+    i_a =  5; i_b =  5; i_cmpop = BGEU; #1 check(1);
+    i_a = -3; i_b = -5; i_cmpop = BGEU; #1 check(1);
+    i_a = -5; i_b = -3; i_cmpop = BGEU; #1 check(0);
+    i_a = -5; i_b =  3; i_cmpop = BGEU; #1 check(1);
+    i_a = -3; i_b =  3; i_cmpop = BGEU; #1 check(1);
 
     $finish();
 end
