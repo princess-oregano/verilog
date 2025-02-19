@@ -4,10 +4,10 @@ module mux_tb;
 
 localparam int WIDTH = 8;
 
-wire  [WIDTH-1:0] i_a = 1;
-wire  [WIDTH-1:0] i_b = 2;
-wire  [WIDTH-1:0] i_c = 3;
-wire  [WIDTH-1:0] i_d = 4;
+logic [WIDTH-1:0] i_a = 1;
+logic [WIDTH-1:0] i_b = 2;
+logic [WIDTH-1:0] i_c = 3;
+logic [WIDTH-1:0] i_d = 4;
 logic  [1:0]       i_sel;
 
 logic  [WIDTH-1:0] o_out;
@@ -30,3 +30,4 @@ task check (input [WIDTH-1:0] expects) ;
 endtask
 
 endmodule
+
