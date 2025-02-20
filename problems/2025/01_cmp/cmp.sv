@@ -1,9 +1,9 @@
 `include "cmpop.svh"
 
 module cmp (
-    input wire [31:0] i_a,
-    input wire [31:0] i_b,
-    input wire [2:0]  i_cmpop,
+    input logic [31:0] i_a,
+    input logic [31:0] i_b,
+    input logic [2:0]  i_cmpop,
 
     output logic o_taken
 );

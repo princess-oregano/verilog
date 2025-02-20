@@ -1,11 +1,11 @@
 module mux #(
     parameter int WIDTH = 8
 ) (
-    input wire  [WIDTH-1:0] i_a,
-    input wire  [WIDTH-1:0] i_b,
-    input wire  [WIDTH-1:0] i_c,
-    input wire  [WIDTH-1:0] i_d,
-    input logic  [1:0]       i_sel,
+    input logic [WIDTH-1:0] i_a,
+    input logic [WIDTH-1:0] i_b,
+    input logic [WIDTH-1:0] i_c,
+    input logic [WIDTH-1:0] i_d,
+    input logic [1:0]       i_sel,
 
     output logic [WIDTH-1:0] o_out
 );
