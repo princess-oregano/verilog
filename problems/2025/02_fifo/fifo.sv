@@ -30,7 +30,11 @@ always @(posedge clk or negedge rst_n) begin
         wr_ptr <= {ADDRW{1'b0}};
         // Mem should also be zero? Or x?
     end
-    else begin
+end
+
+
+always @(posedge clk) begin
+    if (!rst_n) begin
         if (i_wr_en) begin
             mem [wr_ptr[ADDRW-1:0]] <= i_wr_data;
             wr_ptr <= wr_ptr + 1;
