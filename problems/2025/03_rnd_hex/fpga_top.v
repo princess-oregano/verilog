@@ -19,11 +19,26 @@ wire [7:0] segments;
 wire [15:0] val;
 wire lfsr_en;
 
-lfsr lfsr(.clk(CLK), .rst_n(rst_n), .en(lfsr_en), .o_out(val));
+lfsr lfsr(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .en(lfsr_en),
+    .o_out(val)
+);
 
-clkdiv clkdiv(.clk(CLK), .rst_n(rst_n), .out(lfsr_en));
+clkdiv clkdiv(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .out(lfsr_en)
+);
 
-hex_display hex_display(CLK, rst_n, val, anodes, segments);
+hex_display hex_display(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .i_data(val),
+    .o_anodes(anodes),
+    .o_segments(segments)
+);
 
 ctrl_74hc595 ctrl(
     .clk    (CLK                ),

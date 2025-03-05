@@ -17,7 +17,13 @@ end
 wire [3:0] anodes;
 wire [7:0] segments;
 
-hex_display hex_display(CLK, rst_n, 16'hFFFF, anodes, segments);
+hex_display hex_display(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .i_data(16'hFFFF),
+    .o_anodes(anodes),
+    .o_segments(segments)
+);
 
 ctrl_74hc595 ctrl(
     .clk    (CLK                ),

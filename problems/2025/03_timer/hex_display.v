@@ -1,19 +1,19 @@
 module hex_display #(
     parameter CNT_WIDTH = 14
 )(
-    input wire clk,
-    input wire rst_n,
+    input  wire             clk,
+    input  wire             rst_n,
 
-    input wire [15:0] i_data,
+    input  wire [15:0]      i_data,
 
-    output wire [3:0] o_anodes,
-    output reg [7:0] o_segments
+    output wire [3:0]       o_anodes,
+    output reg  [7:0]       o_segments
 );
 
-reg [CNT_WIDTH-1:0] cnt;
-wire [1:0] pos = cnt[CNT_WIDTH-1:CNT_WIDTH-2];
+reg  [CNT_WIDTH-1:0] cnt;
+wire           [1:0] pos = cnt[CNT_WIDTH-1:CNT_WIDTH-2];
 
-reg [3:0] digit;
+reg            [3:0] digit;
 
 always @(*) begin
     case (pos)

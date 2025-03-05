@@ -10,10 +10,10 @@ module hex_display #(
     output reg [7:0] o_segments
 );
 
-reg [CNT_WIDTH-1:0] cnt;
-wire [1:0] pos = cnt[CNT_WIDTH-1:CNT_WIDTH-2];
+reg  [CNT_WIDTH-1:0] cnt;
+wire           [1:0] pos = cnt[CNT_WIDTH-1:CNT_WIDTH-2];
 
-reg [3:0] digit;
+reg            [3:0] digit;
 
 always @(*) begin
     case (pos)
@@ -25,7 +25,7 @@ always @(*) begin
 end
 
 always @(posedge clk or negedge rst_n)
-   cnt <= !rst_n ? {CNT_WIDTH{1'b0}} : (cnt + 1'b1);
+    cnt <= !rst_n ? {CNT_WIDTH{1'b0}} : (cnt + 1'b1);
 
 assign o_anodes = ~(4'b0001 << pos);
 

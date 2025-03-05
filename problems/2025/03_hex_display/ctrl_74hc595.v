@@ -1,16 +1,16 @@
 module ctrl_74hc595 (
-    input wire clk,
-    input wire rst_n,
+    input  wire         clk,
+    input  wire         rst_n,
 
-    input wire [11:0] i_data,
+    input  wire [11:0]  i_data,
 
-    output wire o_stcp,
-    output wire o_shcp,
-    output wire o_ds,
-    output wire o_oe
+    output wire         o_stcp,
+    output wire         o_shcp,
+    output wire         o_ds,
+    output wire         o_oe
 );
 
-reg  [4:0] cnt;
+reg   [4:0] cnt;
 wire  [3:0] pos = cnt[4:1];
 wire [15:0] data = {4'b0, i_data};
 

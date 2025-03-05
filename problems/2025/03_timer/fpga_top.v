@@ -19,11 +19,26 @@ wire [7:0] segments;
 wire [15:0] val;
 wire timer_en;
 
-timer timer(.clk(CLK), .rst_n(rst_n), .en(timer_en), .o_cnt(val));
+timer timer(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .en(timer_en),
+    .o_cnt(val)
+);
 
-clkdiv clkdiv(.clk(CLK), .rst_n(rst_n), .out(timer_en));
+clkdiv clkdiv(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .out(timer_en)
+);
 
-hex_display hex_display(CLK, rst_n, val, anodes, segments);
+hex_display hex_display(
+    .clk(CLK),
+    .rst_n(rst_n),
+    .i_data(val),
+    .o_anodes(anodes),
+    .o_segments(segments)
+);
 
 ctrl_74hc595 ctrl(
     .clk    (CLK                ),

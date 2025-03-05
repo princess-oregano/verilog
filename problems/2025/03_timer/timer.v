@@ -1,11 +1,11 @@
 module timer #(
     parameter COUNT = 600
 )(
-    input wire clk,
-    input wire rst_n,
-    input wire en,
+    input  wire             clk,
+    input  wire             rst_n,
+    input  wire             en,
 
-    output reg [WIDTH-1:0] o_cnt
+    output reg [WIDTH-1:0]  o_cnt
 );
 
 localparam WIDTH = $clog2(COUNT);
