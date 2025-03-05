@@ -33,7 +33,7 @@ always @(*) begin
     case (digit)
         4'h0: o_segments = 8'b11111100;
         4'h1: o_segments = 8'b01100000;
-        4'h2: o_segments = 8'b01100000;
+        4'h2: o_segments = 8'b11011010;
         4'h3: o_segments = 8'b11110010;
         4'h4: o_segments = 8'b01100110;
         4'h5: o_segments = 8'b10110110;
