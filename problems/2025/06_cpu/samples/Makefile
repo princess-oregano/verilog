@@ -10,14 +10,19 @@ FUNCSIM=whisper
 
 S_SRCS=$(wildcard *.s)
 C_SRCS=$(wildcard *.c)
-S_TXTS=$(S_SRCS:%.s=%.txt)
-C_TXTS=$(C_SRCS:%.c=%.txt)
+S_MIFS=$(S_SRCS:%.s=%.mif)
+C_MIFS=$(C_SRCS:%.c=%.mif)
 
-all: $(S_TXTS) $(C_TXTS)
+DMEM_LEN ?= 256
+
+all: $(S_MIFS) $(C_MIFS)
+
+%.mif: %.txt
+	python3 txt2mif.py $^ $@
 
 %.txt: %.bin
 	hexdump -v -e '"%08x\n"' $^ > $@
-	python3 nop_pad.py $@
+	python3 nop_pad.py $@ $(DMEM_LEN)
 
 %.bin: %.out
 	$(OBJCOPY) -j .text -O binary $^ $@
