@@ -5,13 +5,13 @@ RTL_LIST := 		\
 	src/core.v		\
 	src/alu.v		\
 	src/cmp.v		\
-	src/reg_file.v	\
+	src/regfile.v	\
 	src/control.v	\
 	src/imem.v		\
 	src/dmem.v		\
 	src/mem_xbar.v	\
 	src/lsu.v		\
-	src/mux4.v		\
+	src/mux.v		\
 
 sim: $(TB_LIST) $(RTL_LIST)
 	iverilog -I./src/ $^ -o sim

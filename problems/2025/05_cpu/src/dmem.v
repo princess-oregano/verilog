@@ -30,4 +30,3 @@ assign o_data = mem[i_addr];
 
 endmodule
 
-

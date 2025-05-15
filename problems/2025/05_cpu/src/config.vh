@@ -1,5 +1,5 @@
-`define IMEM_FILE_TXT   "samples/fib_riscv.txt"
-`define IMEM_ADDR_WIDTH 6
+`define IMEM_FILE_TXT   "samples/fib_fpga.txt"
+`define IMEM_ADDR_WIDTH 5
 
 `define DMEM_ADDR_WIDTH 5
 
@@ -9,3 +9,4 @@
 `define XBAR_DATA_LIMIT 30'h3FFF
 
 `define XBAR_HEXD_ADDR0 30'h0008
+
