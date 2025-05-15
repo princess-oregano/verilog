@@ -1,5 +1,6 @@
 `include "alu.vh"
 `include "cmp.vh"
+`include "lsu.vh"
 `include "core.vh"
 
 module control (
@@ -17,7 +18,7 @@ module control (
     output reg                     o_wb_en,
 
     output reg                     o_store,
-    output reg               [3:0] o_store_mask
+    output reg               [2:0] o_lsu_op
 );
 
 // Parse the instruction.
@@ -28,21 +29,21 @@ wire [4:0] funct7 = i_instr[31:25];
 // Set output according to intruction.
 always @(*) begin
     casez ({funct7, funct3, opcode})
-        `define CASE_OP(NAME_, ENCODE_, ALUOP_, ALUSEL1_, ALUSEL2_, WBSEL_, WB_, CMPOP_, BRANCH_, JUMP_, ST_, ST_MASK_)     \
-            ENCODE_: begin                                                                                                  \
-                o_aluop = ALUOP_;                                                                                           \
-                o_alusel1 = ALUSEL1_;                                                                                       \
-                o_alusel2 = ALUSEL2_;                                                                                       \
-                                                                                                                            \
-                o_cmpop = CMPOP_;                                                                                           \
-                o_branch = BRANCH_;                                                                                         \
-                o_jump = JUMP_;                                                                                             \
-                                                                                                                            \
-                o_wb_sel = WBSEL_;                                                                                          \
-                o_wb_en = WB_;                                                                                              \
-                                                                                                                            \
-                o_store = ST_;                                                                                              \
-                o_store_mask = ST_MASK_;                                                                                    \
+        `define CASE_OP(NAME_, ENCODE_, ALUOP_, ALUSEL1_, ALUSEL2_, WBSEL_, WB_, CMPOP_, BRANCH_, JUMP_, ST_, LSUOP_) \
+            ENCODE_: begin                                                                                            \
+                o_aluop = ALUOP_;                                                                                     \
+                o_alusel1 = ALUSEL1_;                                                                                 \
+                o_alusel2 = ALUSEL2_;                                                                                 \
+                                                                                                                      \
+                o_cmpop = CMPOP_;                                                                                     \
+                o_branch = BRANCH_;                                                                                   \
+                o_jump = JUMP_;                                                                                       \
+                                                                                                                      \
+                o_wb_sel = WBSEL_;                                                                                    \
+                o_wb_en = WB_;                                                                                        \
+                                                                                                                      \
+                o_store = ST_;                                                                                        \
+                o_lsu_op = LSUOP_;                                                                                    \
             end
 
         `include "instr.vh"

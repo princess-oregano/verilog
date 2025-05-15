@@ -55,7 +55,7 @@ reg  [31:0] wb_data;
 wire [1:0]  wb_sel;
 wire        wb_en;
 wire        store;
-wire [3:0]  store_mask;
+wire [2:0]  lsu_op;
 
 wire [31:0] src1;
 wire [31:0] src2;
@@ -138,17 +138,17 @@ regfile regfile(
 );
 
 lsu lsu(
-    .i_st_ld_sel (store     ),
-    .i_addr      (alu_res   ),
-    .i_st_data   (src2      ),
-    .i_mask      (store_mask),
-    .o_ld_data   (load_data ),
+    .i_store    (store     ),
+    .i_addr     (alu_res   ),
+    .i_st_data  (src2      ),
+    .i_op       (lsu_op    ),
+    .o_ld_data  (load_data ),
 
-    .o_st_ld_sel (o_mem_we  ),
-    .o_addr      (o_mem_addr),
-    .o_st_data   (o_mem_data),
-    .o_mask      (o_mem_mask),
-    .i_ld_data   (i_mem_data)
+    .o_mem_we   (o_mem_we  ),
+    .o_mem_addr (o_mem_addr),
+    .o_mem_data (o_mem_data),
+    .o_mem_mask (o_mem_mask),
+    .i_mem_data (i_mem_data)
 );
 
 control control(
@@ -162,7 +162,7 @@ control control(
     .o_wb_sel     (wb_sel      ),
     .o_wb_en      (wb_en       ),
     .o_store      (store       ),
-    .o_store_mask (store_mask  )
+    .o_lsu_op     (lsu_op      )
 );
 
 endmodule
