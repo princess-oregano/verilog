@@ -1,4 +1,4 @@
-TEST_SIZE ?= 4096
+TEST_SIZE ?= 2048
 TEST_OP   ?= mul
 DEBUG     ?= 0
 
